@@ -1,0 +1,80 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple two-endpoint echo/golang project.",
+        "title": "Kashoo Echo",
+        "contact": {
+            "name": "Dominik Golonka",
+            "url": "http://www.github.com/domgolonka",
+            "email": "domgolonka@gmail.com"
+        },
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "127.0.0.1:1323",
+    "basePath": "/",
+    "paths": {
+        "/geolocate/{ip}": {
+            "get": {
+                "description": "Requests an IP address and returns the location data using the ipgeolocation.io API.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "geolocation"
+                ],
+                "summary": "Gets the location data of an IPv4 or Ipv6.",
+                "operationId": "get-geo-location-from-ip",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "IP Address",
+                        "name": "ip",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handlers.Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "field": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

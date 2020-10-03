@@ -1,0 +1,55 @@
+basePath: /
+definitions:
+  handlers.Error:
+    properties:
+      code:
+        type: integer
+      field:
+        type: string
+      message:
+        type: string
+    type: object
+host: 127.0.0.1:1323
+info:
+  contact:
+    email: domgolonka@gmail.com
+    name: Dominik Golonka
+    url: http://www.github.com/domgolonka
+  description: This is a simple two-endpoint echo/golang project.
+  license: {}
+  title: Kashoo Echo
+  version: "1.0"
+paths:
+  /geolocate/{ip}:
+    get:
+      description: Requests an IP address and returns the location data using the
+        ipgeolocation.io API.
+      operationId: get-geo-location-from-ip
+      parameters:
+      - description: IP Address
+        in: path
+        name: ip
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.Error'
+      summary: Gets the location data of an IPv4 or Ipv6.
+      tags:
+      - geolocation
+schemes:
+- http
+swagger: "2.0"
