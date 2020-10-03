@@ -22,6 +22,8 @@ info:
 paths:
   /geolocate/{ip}:
     get:
+      consumes:
+      - application/json
       description: Requests an IP address and returns the location data using the
         ipgeolocation.io API.
       operationId: get-geo-location-from-ip

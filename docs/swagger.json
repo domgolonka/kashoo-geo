@@ -20,6 +20,9 @@
         "/geolocate/{ip}": {
             "get": {
                 "description": "Requests an IP address and returns the location data using the ipgeolocation.io API.",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],

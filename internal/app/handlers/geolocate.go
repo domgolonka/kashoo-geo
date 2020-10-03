@@ -17,6 +17,7 @@ import (
 // @Description Requests an IP address and returns the location data using the ipgeolocation.io API.
 // @Tags geolocation
 // @ID get-geo-location-from-ip
+// @Accept json
 // @Produce json
 // @Param ip path string true "IP Address"
 // @Success 200 {object} map[string]interface{}
